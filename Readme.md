@@ -78,7 +78,7 @@ For any changes in the code or dependencies, you'll need to rebuild the image fo
 
 # API Reference
 
-- GET /spread/<market_id>
+## GET /spread/<market_id>
 Retrieves the spread for the specified market.
 
 URL Parameters:
@@ -97,7 +97,7 @@ Errors:
 400: No bids or asks for the specified market.
 500: Unable to calculate spread.
 
-- POST /set_alert
+## POST /set_alert
 Sets the alert spread value.
 
 Request Body:
@@ -115,7 +115,7 @@ A JSON object containing the new alert spread value:
     "alert_set_to": 10000
 }
 
-- GET /check_alert/<market_id>
+## GET /check_alert/<market_id>
 Checks if the current spread for the specified market is greater than the alert spread.
 
 URL Parameters:
