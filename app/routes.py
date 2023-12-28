@@ -19,13 +19,13 @@ def define_routes(app):
     
     @app.route('/')
     def home():
-        market_id = 'market'  # real market ID
+        market_id = "btc-clp"  # real market ID
         spread_info, status_code = calculate_spread(market_id)  # Unpack the tuple
 
         #Chek the status code to extract data.
         if status_code == 200:
             spread_data = spread_info.json  # Access to .json metod to obtain data.
-            return f"El spread para el mercado {market_id} es {spread_data['spread']}"
+            return f"El spread para el mercado {market_id} es {spread_data['spread']} CLP"
         else:
             return "No se pudo obtener el spread para el mercado especificado."
 
