@@ -44,6 +44,6 @@ def define_routes(app):
 
         return Response("<br>".join(spreads), mimetype='text/html')
 
-    @app.route('/test_set_alert', methods=['GET'])
-    def test_set_alert():
-        return set_alert_util({"json": {"spread": 10000}})
+    # @app.route('/test_set_alert', methods=['GET'])
+    # def test_set_alert():
+    #     return set_alert_util({"json": {"spread": 10000}})
