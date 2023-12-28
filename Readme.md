@@ -66,7 +66,7 @@ python -m unittest tests/test_api.py
 
 docker build -t buda-api .
 
-- This command builds a Docker image named spread-api based on the instructions in your Dockerfile.
+- This command builds a Docker image named buda-api based on the instructions in your Dockerfile.
 
 # Running the Application in a Container
 Once the image is built, you can run the application in a Docker container. To do so, use the following command:
