@@ -1,8 +1,9 @@
 import os
 from flask import jsonify
 import requests
+import json
 
-ALERT_SPREAD = None
+ALERT_SPREAD_FILE = 'alert_spread.json'
 
 # Load environment variables
 API_KEY = os.getenv('BUDA_API_KEY')
@@ -27,17 +28,21 @@ def calculate_spread(market_id):
         return {'error': 'Unable to fetch order book'}, response.status_code
 
 def set_alert(request):
-    # structure for setting an alert
-    global ALERT_SPREAD 
-    ALERT_SPREAD = request.json.get('spread')
-    return jsonify({'alert_set_to': ALERT_SPREAD})
+    alert_spread = request.json.get('spread')
+    with open(ALERT_SPREAD_FILE, 'w') as f:
+        json.dump({'alert_spread': alert_spread}, f)
+    return jsonify({'alert_set_to': alert_spread})
 
 def check_alert(market_id):
+    try:
+        with open(ALERT_SPREAD_FILE, 'r') as f:
+            alert_spread = json.load(f)['alert_spread']
+    except FileNotFoundError:
+        return {'error': 'Alert spread is not set'}, 400
+
     spread_info, status_code = calculate_spread(market_id)
     if status_code != 200:
         return {'error': 'Unable to calculate spread'}, 500
-    if ALERT_SPREAD is None:
-        return {'error': 'Alert spread is not set'}, 400
     current_spread = spread_info['spread']
-    alert_triggered = current_spread > ALERT_SPREAD
+    alert_triggered = current_spread > alert_spread
     return {'market_id': market_id, 'spread': current_spread, 'alert': alert_triggered}, 200

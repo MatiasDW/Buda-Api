@@ -76,6 +76,73 @@ docker run -p 5000:5000 buda-api
 - Ensure the port number specified in the docker run command matches the port on which your application is set to run.
 For any changes in the code or dependencies, you'll need to rebuild the image for them to take effect in the container.
 
+# API Reference
+
+GET /spread/<market_id>
+Retrieves the spread for the specified market.
+
+URL Parameters:
+
+market_id: The ID of the market for which to calculate the spread.
+Response:
+
+A JSON object containing the market ID and the spread:
+
+{
+    "market_id": "BTC-CLP",
+    "spread": 10000
+}
+Errors:
+
+400: No bids or asks for the specified market.
+500: Unable to calculate spread.
+POST /set_alert
+Sets the alert spread value.
+
+Request Body:
+
+A JSON object containing the alert spread:
+
+{
+    "spread": 10000
+}
+Response:
+
+A JSON object containing the new alert spread value:
+
+{
+    "alert_set_to": 10000
+}
+GET /check_alert/<market_id>
+Checks if the current spread for the specified market is greater than the alert spread.
+
+URL Parameters:
+
+market_id: The ID of the market for which to check the alert.
+Response:
+
+A JSON object containing the market ID, the current spread, and whether the alert is triggered:
+
+{
+    "market_id": "BTC-CLP",
+    "spread": 10000,
+    "alert": false
+}
+Errors:
+
+400: Alert spread is not set.
+500: Unable to calculate spread.
+Examples
+You can use curl to make requests to the API. Here's an example of how to set the alert spread:
+
+curl -X POST -H "Content-Type: application/json" -d '{"spread":10000}' http://localhost:5000/set_alert
+Replace localhost:5000 with your server's address and port.
+
+# Environment Variables
+## The application uses the following environment variables:
+- API_KEY: Your Buda.com API key. This is used to authenticate with the Buda.com API.
+- API_SECRET: Your Buda.com API secret. This is used to authenticate with the Buda.com API.
+
 # FAQ
 ## How can I change the port on which the API runs?
 - You can modify the configuration file or set an environment variable to specify a different port.
@@ -90,4 +157,8 @@ For any changes in the code or dependencies, you'll need to rebuild the image fo
 - For support, questions, or collaboration, you can reach me at matiasdw8@gmail.com or https://github.com/MatiasDW
 
 # Contributions
-- Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+- Contributions are welcome! Here's how you can contribute to this project:
+
+- Reporting Bugs: Open an issue in the GitHub repository describing the bug.
+- Suggesting Features: Open an issue in the GitHub repository describing the new feature.
+- Submitting Pull Requests: If you've fixed a bug or added a new feature, you can submit a pull request. Please ensure your code follows the existing style and all tests pass
