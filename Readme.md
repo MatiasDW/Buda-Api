@@ -62,16 +62,16 @@ python -m unittest tests/test_api.py
 
 # FAQ
 ## How can I change the port on which the API runs?
-### You can modify the configuration file or set an environment variable to specify a different port.
+You can modify the configuration file or set an environment variable to specify a different port.
 
 ## Where can I find more information about the available markets?
-### Visit the official Buda.com documentation for an updated list of markets and their IDs.
+Visit the official Buda.com documentation for an updated list of markets and their IDs.
 
 # License
-## This project is under the MIT License - see the LICENSE.md file for details.
+This project is under the MIT License - see the LICENSE.md file for details.
 
 # Contact
-## For support, questions, or collaboration, you can reach me at matiasdw8@gmail.com or https://github.com/MatiasDW
+For support, questions, or collaboration, you can reach me at matiasdw8@gmail.com or https://github.com/MatiasDW
 
 # Contributions
-### Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
