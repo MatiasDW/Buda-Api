@@ -5,11 +5,12 @@ from utils import calculate_spread as calculate_spread_util, set_alert as set_al
 def get_markets():
     response = requests.get('https://www.buda.com/api/v2/markets')
     markets = response.json()
+    market_ids = []
 
     for market in markets['markets']:
-        print(market['id'])
+        market_ids.append(market['id'])
 
-get_markets()
+    return market_ids
 
 def define_routes(app):
 
