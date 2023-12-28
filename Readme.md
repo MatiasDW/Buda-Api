@@ -1,10 +1,10 @@
-# Spread API
+# Buda-Api
 
 ## Introduction
 Spread API is a REST API designed and implemented as part of Buda.com's initiatives to facilitate interaction with cryptocurrency markets. This API allows users to calculate and retrieve the spread of markets on Buda.com and manage spread alerts for continuous monitoring.
 
 ### Prerequisites
-- Python 3.8 or higher.
+- Python 3.8 or higher. I used Python 3.11 with pip version 23.2.1
 - pip for managing Python packages.
 
 ### Features
@@ -14,15 +14,14 @@ Spread API is a REST API designed and implemented as part of Buda.com's initiati
 
 ## Installation and Setup
 **Clone the Repository:**
-bash
-git clone [Repository URL]
+git clone https://github.com/MatiasDW/Buda-Api
 cd spread-api
 
 ## Install Dependencies:
 pip install -r requirements.txt
 
 ## Environment Variables:
-Set up necessary environment variables according to your local or production setup.
+- Set up necessary environment variables according to your local or production setup.
 
 # Usage
 ## Start the aplication 
@@ -60,18 +59,35 @@ curl -X POST http://localhost:5000/alert/spread -d '{"alert_value": 5000}'
 ## Run Tests:
 python -m unittest tests/test_api.py
 
+# Docker Setup and Usage
+
+### Building the Docker Container
+- To build a Docker container for this application, ensure you have Docker installed and running on your system. Then, execute the following command from the root of the project:
+
+docker build -t buda-api .
+
+- This command builds a Docker image named spread-api based on the instructions in your Dockerfile.
+
+# Running the Application in a Container
+Once the image is built, you can run the application in a Docker container. To do so, use the following command:
+docker run -p 5000:5000 buda-api
+
+## Notes
+- Ensure the port number specified in the docker run command matches the port on which your application is set to run.
+For any changes in the code or dependencies, you'll need to rebuild the image for them to take effect in the container.
+
 # FAQ
 ## How can I change the port on which the API runs?
-You can modify the configuration file or set an environment variable to specify a different port.
+- You can modify the configuration file or set an environment variable to specify a different port.
 
 ## Where can I find more information about the available markets?
-Visit the official Buda.com documentation for an updated list of markets and their IDs.
+- Visit the official Buda.com documentation for an updated list of markets and their IDs.
 
 # License
-This project is under the MIT License - see the LICENSE.md file for details.
+- This project is under the MIT License - see the LICENSE.md file for details.
 
 # Contact
-For support, questions, or collaboration, you can reach me at matiasdw8@gmail.com or https://github.com/MatiasDW
+- For support, questions, or collaboration, you can reach me at matiasdw8@gmail.com or https://github.com/MatiasDW
 
 # Contributions
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+- Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
