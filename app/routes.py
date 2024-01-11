@@ -2,16 +2,6 @@ import requests
 from flask import jsonify, request, Response
 from utils import calculate_spread as calculate_spread_util, set_alert as set_alert_util, check_alert as check_alert_util
 
-def get_markets():
-    response = requests.get('https://www.buda.com/api/v2/markets')
-    markets = response.json()
-    market_ids = []
-
-    for market in markets['markets']:
-        market_ids.append(market['id'])
-
-    return market_ids
-
 def define_routes(app):
 
     @app.route('/spread/<market_id>', methods=['GET'])
